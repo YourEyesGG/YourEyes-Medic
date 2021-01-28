@@ -8,6 +8,8 @@ PlayerData = {}
 anjay = true
 local cd = false
 
+local Cooldown = 3600000 -- ISI COOLDOWN DISINI (MS)
+
 doktorPed = {name = "Doktor YourEyes", icon = "CHAR_CALL911", model = "s_m_m_doctor_01", colour = 111}
 
 TriggerEvent('esx:getSharedObject', function(obj) ESX = obj end)
@@ -34,8 +36,8 @@ AddEventHandler('onResourceStart', function(resource)
 	ESX.PlayerData = ESX.GetPlayerData()
 end)
 
-RegisterNetEvent('esxsetjob')
-AddEventHandler('esxsetjob', function(xPlayer)
+RegisterNetEvent('esx:setjob')
+AddEventHandler('esx:setjob', function(xPlayer)
 	ESX.PlayerData = ESX.GetPlayerData()
 end)
 
@@ -50,7 +52,7 @@ RegisterCommand("medisnpc", function(source, args, raw)
 						TriggerEvent("youreyes-medic:npc")
 						anjay = false
 						cd = true
-						Citizen.Wait(3600000) -- ISI COOLDOWN DISINI (MS)
+						Citizen.Wait(Cooldown) -- ISI COOLDOWN DISINI (MS)
 						cd = false
 					else
 						exports['mythic_notify']:DoHudText('error', 'EMS Sudah Tersedia, Silahkan Hubungi EMS.')
