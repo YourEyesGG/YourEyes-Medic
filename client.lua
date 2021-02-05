@@ -1,5 +1,3 @@
---- YANG DUMP GW DOAIN GINJALNYA MELEDAK --
-
 -- ======== Copyright YourEyes ======== --
 ------------------------------------------
 
@@ -84,7 +82,7 @@ AddEventHandler("youreyes-medic:npc", function()
 end)
 
 function DoktorNPC(x, y, z, doktorkod)
-    DoktorP = CreatePed(4, doktorkod, GetEntityCoords(player), spawnHeading, true, false)  
+    DokterCreate = CreatePed(4, doktorkod, GetEntityCoords(player), spawnHeading, true, false)  
 		
 	RequestAnimDict("mini@cpr@char_a@cpr_str")
 	while not HasAnimDictLoaded("mini@cpr@char_a@cpr_str") do
@@ -106,17 +104,21 @@ function DoktorNPC(x, y, z, doktorkod)
 			disableCombat = true,
 		},
 	})
+	
 	Citizen.Wait(20000)
-	ClearPedTasks(DoktorP)
+	ClearPedTasks(DokterCreate)
+	
 	Citizen.Wait(500)
 	TriggerEvent('esx_ambulancejob:revive')
 	TriggerServerEvent('youreyes-medis:Bayar')
+	
 	Citizen.Wait(1000)
-	DeletePed(DoktorP)
+	DeletePed(DokterCreate)
 	anjay = true
 	exports['mythic_notify']:DoHudText('error', 'Kamu Sudah Mendapatkan Perawatan.')
+	
 	Citizen.Wait(100)
-	ClearPedTasks(DoktorP)
+	ClearPedTasks(DokterCreate)
 end
 
 function loadAnimDict(dict)
@@ -128,5 +130,3 @@ end
 
 -- ======== Copyright YourEyes ======== --
 ------------------------------------------
-
---- YANG DUMP GW DOAIN GINJALNYA MELEDAK --
