@@ -93,7 +93,7 @@ function DoktorNPC(x, y, z, doktorkod)
 	
 	TriggerEvent("mythic_progbar:client:progress", {
 		name = "Obatyoureyes",
-		duration = 20000,
+		duration = 20500,
 		label = 'Sedang di Obati',
 		useWhileDead = true,
 		canCancel = false,
